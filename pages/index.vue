@@ -54,7 +54,7 @@ export default {
   },
   head() {
     return {
-      title: "hello world"
+      title: "MotiMoti Playground"
     }
   }
 }
