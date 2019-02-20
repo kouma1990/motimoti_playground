@@ -1,6 +1,15 @@
 <template>
   <div>
-    MotiMoti Playground
+    <el-row>
+      <el-button type="danger" @click="shuffle">押しちゃだめ</el-button>
+    </el-row>
+    <el-row style="margin-top:8px">
+      <transition-group name="cell" tag="div" class="container">
+        <div v-for="cell in cells" :key="cell.id" class="cell">
+            <img v-show="show_img" src="https://emoji.slack-edge.com/T5YEKPMD0/kj/7507eb67b4768fd0.gif" width="25">
+        </div>
+      </transition-group>
+    </el-row>
   </div>
 
 </template>
@@ -46,3 +55,34 @@ export default {
   }
 }
 </script>
+
+<style scope>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 238px;
+  margin-top: 10px;
+}
+.cell {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+.cell:nth-child(3n) {
+  margin-right: 0;
+}
+.cell:nth-child(27n) {
+  margin-bottom: 0;
+}
+.cell-move {
+  transition: transform 1s;
+}
+
+a {
+  text-decoration: none;
+}
+</style>

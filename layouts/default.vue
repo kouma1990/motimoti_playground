@@ -1,17 +1,27 @@
 <template>
   <el-container>
     <el-header>
-      <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal">
-        <el-menu-item index="1">MotiMoti</el-menu-item>
-        <el-menu-item index="2">About</el-menu-item>
-        <el-menu-item index="3">Info</el-menu-item>
-      </el-menu>      
+      <el-menu class="el-menu-demo" mode="horizontal" :default-active="activeIndex" router>
+        <el-menu-item index="index" :route="{name:'index'}">MotiMoti</el-menu-item>
+        <el-menu-item index="about" :route="{name:'about'}"> About</el-menu-item>
+        <el-menu-item index="kj" :route="{name:'kj'}">KJ</el-menu-item>       
+      </el-menu>
     </el-header>
     <el-main>
       <nuxt />
     </el-main>
   </el-container>
 </template>
+
+<script>
+export default {
+    computed:{
+        activeIndex() {
+          return this.$route.name;
+        } 
+    }
+}
+</script>
 
 <style>
 html {
