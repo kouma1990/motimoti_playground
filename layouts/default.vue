@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <nuxt />
-  </div>
+  <el-container>
+    <el-header>
+      <el-menu :default-active="'1'" class="el-menu-demo" mode="horizontal">
+        <el-menu-item index="1">MotiMoti</el-menu-item>
+        <el-menu-item index="2">About</el-menu-item>
+        <el-menu-item index="3">Info</el-menu-item>
+      </el-menu>      
+    </el-header>
+    <el-main>
+      <nuxt />
+    </el-main>
+  </el-container>
 </template>
 
 <style>

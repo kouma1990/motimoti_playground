@@ -1,68 +1,88 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        playground
-      </h1>
-      <h2 class="subtitle">
-        My splendiferous Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div>
+    <el-row>
+      <el-button type="danger" @click="shuffle">押しちゃだめ</el-button>
+    </el-row>
+    <el-row style="margin-top:8px">
+      <transition-group name="cell" tag="div" class="container">
+        <div v-for="cell in cells" :key="cell.id" class="cell">
+            <img v-show="show_img" src="https://emoji.slack-edge.com/T5YEKPMD0/kj/7507eb67b4768fd0.gif" width="25">
+        </div>
+      </transition-group>
+    </el-row>
+  </div>
+
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
 
 export default {
+  data() {
+    return {
+      show_img : false,
+      cells: Array.apply(null, { length: 81 })
+    	.map(function (_, index) { 
+      	return {
+        	id: index,
+        	number: index % 9 + 1
+        }
+      })
+    }
+  },
   components: {
     Logo
+  },
+  methods: {
+  	shuffle: function () {
+      if(!this.show_img){
+        this.show_img = true;
+        return 0;
+      }
+      for (var i = this.cells.length - 1; i >= 0; i--){
+        
+        // 0~iのランダムな数値を取得
+        var rand = Math.floor( Math.random() * ( i + 1 ) );
+        // 配列の数値を入れ替える
+        [this.cells[i], this.cells[rand]] = [this.cells[rand], this.cells[i]]
+      }
+      this.$nextTick(() => {
+          this.$forceUpdate();
+      });
+      
+    }
+  },
+  head() {
+    return {
+      title: "hello world"
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+  .container {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  width: 238px;
+  margin-top: 10px;
+}
+.cell {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  text-align: center;
+  width: 25px;
+  height: 25px;
+  margin-right: -1px;
+  margin-bottom: -1px;
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.cell:nth-child(3n) {
+  margin-right: 0;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.cell:nth-child(27n) {
+  margin-bottom: 0;
 }
-
-.links {
-  padding-top: 15px;
+.cell-move {
+  transition: transform 1s;
 }
 </style>
