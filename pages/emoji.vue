@@ -1,7 +1,7 @@
 <template>
   <div>
     synapse emoji<br><br>
-    <img :src="emoji.url" style="width:25px"  v-for="emoji in list" :key="emoji.id">
+    <img :src="emoji.url" style="width:40px"  v-for="emoji in list" :key="emoji.id">
   </div>
 
 </template>
