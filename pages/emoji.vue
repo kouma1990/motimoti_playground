@@ -14,7 +14,8 @@ export default {
     }
   },
   mounted () {
-    const response = this.$axios.$get('https://slack.com/api/emoji.list?token=process.env.SLACK_API_TOKEN').then((response)=>{
+    const response = this.$axios.$get('https://slack.com/api/emoji.list?token='+process.env.SLACK_API_TOKEN).then((response)=>{
+      console.log(process.env.SLACK_API_TOKEN)
       for(var key in response.emoji) {
         this.list.push({"id":key, "url":response.emoji[key]})
       }
