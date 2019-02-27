@@ -3,8 +3,9 @@
     <el-header>
       <el-menu class="el-menu-demo" mode="horizontal" :default-active="activeIndex" router>
         <el-menu-item index="index" :route="{name:'index'}">MotiMoti</el-menu-item>
-        <el-menu-item index="about" :route="{name:'about'}"> About</el-menu-item>
+        <el-menu-item index="about" :route="{name:'about'}">About</el-menu-item>
         <el-menu-item index="kj" :route="{name:'kj'}">KJ</el-menu-item>
+        <el-menu-item index="emoji" :route="{name:'emoji'}">Emoji</el-menu-item>
         <el-menu-item index="hb" :route="{name:'hb'}">HB</el-menu-item>
       </el-menu>
     </el-header>
