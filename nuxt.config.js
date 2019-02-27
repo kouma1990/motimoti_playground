@@ -64,5 +64,9 @@ module.exports = {
     extend(config, ctx) {
       
     }
+  },
+  env: {
+    SLACK_API_TOKEN: process.env.SLACK_API_TOKEN
   }
+
 }

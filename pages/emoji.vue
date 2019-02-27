@@ -1,6 +1,6 @@
 <template>
   <div>
-    synaplse emoji<br><br>
+    synapse emoji<br><br>
     <img :src="emoji.url" style="width:25px"  v-for="emoji in list" :key="emoji.id">
   </div>
 
@@ -15,9 +15,10 @@ export default {
   },
   mounted () {
     const response = this.$axios.$get('https://slack.com/api/emoji.list?token='+process.env.SLACK_API_TOKEN).then((response)=>{
-      console.log(process.env.SLACK_API_TOKEN)
       for(var key in response.emoji) {
-        this.list.push({"id":key, "url":response.emoji[key]})
+        if(response.emoji[key].slice(0,4) == "http") {
+          this.list.push({"id":key, "url":response.emoji[key]})
+        }
       }
     })
   }
