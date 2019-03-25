@@ -90,10 +90,10 @@
 		//var d = new Date(new Date().getTime() + 800 * 120 * 120 * 2000);
 		simplyCountdown('.simply-countdown-one', {
 			year: 2019,
-			month: 3,
-			day: 21,
+			month: 5,
+			day: 1,
 			hours: 18,
-			minutes: 35,
+			minutes: 10,
 		});
 
 	};
