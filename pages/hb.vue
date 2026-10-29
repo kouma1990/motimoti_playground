@@ -35,11 +35,6 @@ export default {
 
       return hit + " - " + blow;
     }
-  },
-  head() {
-    return {
-      title: "MotiMoti Playground"
-    }
   }
 }
 </script>

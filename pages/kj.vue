@@ -47,11 +47,6 @@ export default {
       });
       
     }
-  },
-  head() {
-    return {
-      title: "MotiMoti Playground"
-    }
   }
 }
 </script>

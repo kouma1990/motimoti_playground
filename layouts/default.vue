@@ -10,7 +10,7 @@
       </el-menu>
     </el-header>
     <el-main>
-      <nuxt />
+      <slot />
     </el-main>
   </el-container>
 </template>
